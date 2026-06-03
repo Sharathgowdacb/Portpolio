@@ -31,7 +31,7 @@ $(document).ready(function () {
 
     // Typed.js Initialization
     new Typed('.typing-text', {
-        strings: ['Full Stack Java Developer', 'Full Stack Web Developer'],
+        strings: ['Data Scientist', 'Python Full Stack Developer'],
         loop: true,
         typeSpeed: 50,
         backSpeed: 25,
@@ -74,28 +74,5 @@ $(document).ready(function () {
       },
       "retina_detect": true
     });
-
-    // Skills Data & Rendering
-    const skills = [
-        { name: 'Java', icon: '<i class="fab fa-java" style="color:#007396;"></i>' },
-        { name: 'DSA', icon: '<i class="fas fa-brain" style="color:#ff8a65;"></i>' },
-        { name: 'Full Stack Development', icon: '<i class="fas fa-layer-group" style="color:#4db6ac;"></i>' },
-        { name: 'Cloud Computing', icon: '<i class="fas fa-cloud" style="color:#4fc3f7;"></i>' },
-        { name: 'Spring Boot', icon: '<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/spring/spring-original.svg" alt="Spring Boot">' },
-        { name: 'MERN Stack', icon: '<i class="fas fa-cogs" style="color:#fff176;"></i>' }
-    ];
-
-    const skillsContainer = document.querySelector('.skillsContainer');
-    let skillHTML = '';
-    skills.forEach(skill => {
-        skillHTML += `
-            <div class="bar">
-                <div class="info">
-                    ${skill.icon}
-                    <span>${skill.name}</span>
-                </div>
-            </div>`;
-    });
-    skillsContainer.innerHTML = skillHTML;
 });
 

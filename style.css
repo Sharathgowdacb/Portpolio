@@ -222,33 +222,145 @@ header .navbar a:hover, header .navbar a.active {
 #skills .container {
     padding: 2rem 0;
 }
-#skills .skillsContainer {
+#skills .skills-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(26rem, 1fr));
     gap: 2rem;
 }
-#skills .bar {
+
+#skills .skill-card--programming { --skill-hue: 210deg; }
+#skills .skill-card--data-science { --skill-hue: 140deg; }
+#skills .skill-card--libraries { --skill-hue: 35deg; }
+#skills .skill-card--full-stack { --skill-hue: 300deg; }
+#skills .skill-card--databases { --skill-hue: 0deg; }
+#skills .skill-card--tools { --skill-hue: 260deg; }
+
+#skills .skill-card {
     background: var(--black);
+    border: 1px solid #333;
+    border-radius: 1.2rem;
     padding: 2rem;
-    border-radius: .5rem;
     box-shadow: var(--box-shadow);
-    text-align: center;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
 }
-#skills .bar .info {
+
+#skills .skill-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, rgba(255, 111, 97, 0.95), rgba(255, 111, 97, 0));
+    filter: hue-rotate(var(--skill-hue, 0deg));
+    opacity: 0.95;
+    pointer-events: none;
+}
+
+#skills .skill-card::after {
+    content: '';
+    position: absolute;
+    inset: -30% -20% auto -20%;
+    height: 22rem;
+    background: radial-gradient(circle at 20% 20%, rgba(255, 111, 97, 0.22), rgba(255, 111, 97, 0));
+    filter: hue-rotate(var(--skill-hue, 0deg));
+    opacity: 0.35;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+
+#skills .skill-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 10px 20px -5px rgba(255, 111, 97, 0.2);
+    border-color: rgba(255, 111, 97, 0.35);
+}
+
+#skills .skill-card:hover::after {
+    opacity: 0.65;
+}
+
+#skills .skill-card__head {
     display: flex;
-    flex-direction: column;
     align-items: center;
+    gap: 1.2rem;
+    padding-bottom: 1.5rem;
+    margin-bottom: 1.5rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+#skills .skill-card__head i {
+    height: 4.2rem;
+    width: 4.2rem;
+    display: grid;
+    place-items: center;
+    border-radius: 1rem;
+    background: rgba(255, 111, 97, 0.12);
+    color: var(--primary-color);
+    font-size: 2.1rem;
+    filter: hue-rotate(var(--skill-hue, 0deg));
+}
+
+#skills .skill-card__head h3 {
+    font-size: 2.1rem;
+    color: var(--white);
+    font-weight: 600;
+    letter-spacing: .2px;
+    text-transform: none;
+}
+
+#skills .skill-pills {
+    display: flex;
+    flex-wrap: wrap;
     gap: 1rem;
 }
-#skills .bar img, #skills .bar svg, #skills .bar i {
-    height: 50px;
-    width: 50px;
-    font-size: 5rem;
-    object-fit: contain;
-}
-#skills .bar span {
-    font-size: 1.5rem;
+
+#skills .pill {
+    display: inline-flex;
+    align-items: center;
+    gap: .8rem;
+    padding: .9rem 1.2rem;
+    border-radius: 999px;
+    background: #1c1c1c;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    color: #e8e8e8;
+    font-size: 1.4rem;
     font-weight: 500;
+    line-height: 1;
+    text-transform: none;
+    -webkit-user-select: none;
+    user-select: none;
+}
+
+#skills .pill i {
+    color: var(--primary-color);
+    font-size: 1.6rem;
+    filter: hue-rotate(var(--skill-hue, 0deg));
+}
+
+#skills .pill-logo {
+    height: 1.7rem;
+    width: 1.7rem;
+    display: inline-block;
+    background: var(--primary-color);
+    filter: hue-rotate(var(--skill-hue, 0deg));
+    -webkit-mask-repeat: no-repeat;
+    -webkit-mask-position: center;
+    -webkit-mask-size: contain;
+    mask-repeat: no-repeat;
+    mask-position: center;
+    mask-size: contain;
+}
+
+#skills .pill-logo--mysql {
+    -webkit-mask-image: url('https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg');
+    mask-image: url('https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg');
+}
+
+#skills .pill:hover {
+    transform: translateY(-2px);
+    border-color: rgba(255, 111, 97, 0.35);
 }
 
 /* Projects Section */
